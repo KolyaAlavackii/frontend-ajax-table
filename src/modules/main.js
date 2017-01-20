@@ -13,22 +13,16 @@ var sortNameUsers = $('.sorted-name-users');
 var lengLastNameUsers = $('.length-lastname-users');
 
 
-function data(elem, elem2){
-    $.ajax({
+
+$.ajax({
         url: 'http://www.mocky.io/v2/55f748b33568195d044b3dc8',
         success: function(usersData){
-            addTableHeaders(elem);
-            usersData = usersData.sort(elem2);
+            addTableHeaders(allusersElem);
             usersData.forEach(function(user){
-                addTableElem(elem, user);
+                addTableElem(allusersElem, user);
             })   
         }
     })
-}
-
-data(allusersElem);
-data(sortAgeUsers, sortings.sortingAge);
-data(sortNameUsers, sortings.sortingName);
 
 
 $.ajax({
@@ -42,6 +36,30 @@ $.ajax({
         }) 
     }
 })
+
+$.ajax({
+        url: 'http://www.mocky.io/v2/55f748b33568195d044b3dc8',
+        success: function(usersData){
+            addTableHeaders(sortAgeUsers);
+            usersData = usersData.sort(sortings.sortingAge);
+            usersData.forEach(function(user){
+                addTableElem(sortAgeUsers, user);
+            })   
+        }
+    })
+    
+
+ $.ajax({
+        url: 'http://www.mocky.io/v2/55f748b33568195d044b3dc8',
+        success: function(usersData){
+            addTableHeaders(sortNameUsers);
+            usersData = usersData.sort(sortings.sortingName);
+            usersData.forEach(function(user){
+                addTableElem(sortNameUsers, user);
+            })   
+        }
+    })
+    
 
 $.ajax({
     url: 'http://www.mocky.io/v2/55f748b33568195d044b3dc8',
